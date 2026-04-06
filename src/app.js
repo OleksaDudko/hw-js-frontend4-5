@@ -4,16 +4,15 @@ import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css'
 defaultModules.set(PNotifyMobile, {});
 
-
 const keys = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
 let currentKeyIndex = 0;
 
-const keyElement = document.querySelector(".key")
-const statusElement = document.querySelector(".start")
-const newGameBtn = document.querySelector(".btn")
+const keyEl = document.querySelector(".key")
+const statusEl = document.querySelector(".start")
+const btnEl = document.querySelector(".btn")
 
 function setCurrentKey() {
-    keyElement.textContent = keys[currentKeyIndex];
+    keyEl.textContent = keys[currentKeyIndex];
 }
 
 document.addEventListener('keydown', function(event) {
@@ -23,17 +22,19 @@ document.addEventListener('keydown', function(event) {
         currentKeyIndex++;
 
         if (currentKeyIndex >= keys.length) {
-            statusElement.textContent = error({
-                text: 'Ви виграли',
-                delay: 3000,
+            statusEl.textContent = "Ви перемогли"
+            PNotify.success({
+                text: 'Ви перемогли!',
+                delay: 2000
             });
+
             currentKeyIndex = 0;
         } else {
-            statusElement.textContent = "Правильно";
+            statusEl.textContent = "Правильно";
         }
         setCurrentKey();
     } else {
-        statusElement.textContent = "Неправильна клавіша";
+        statusEl.textContent = "Неправильна клавіша";
     }
 });
 
@@ -41,9 +42,9 @@ document.addEventListener('keypress', function(event) {
     event.preventDefault();
 });
 
-newGameBtn.addEventListener('click', function() {
+btnEl.addEventListener('click', function() {
     currentKeyIndex = 0;
     setCurrentKey();
-    statusElement.textContent = "Нова гра почалась";
+    statusEl.textContent = "Нова гра почалась";
 });
 setCurrentKey();

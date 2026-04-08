@@ -22,9 +22,9 @@ document.addEventListener('keydown', function(event) {
         currentKeyIndex++;
 
         if (currentKeyIndex >= keys.length) {
-            statusEl.textContent = "Ви перемогли"
-            PNotify.success({
-                text: 'Ви перемогли!',
+            statusEl.textContent = 
+            success({
+                text: 'Ви перемогли',
                 delay: 2000
             });
 

@@ -22,26 +22,31 @@ document.addEventListener('keydown', function(event) {
         currentKeyIndex++;
 
         if (currentKeyIndex >= keys.length) {
-            statusEl.textContent = success({text: 'Ви перемогли', delay: 1000});
-
+            success({ text: 'Ви перемогли', delay: 1000 });
+            statusEl.textContent = 'Ви перемогли';
             currentKeyIndex = 0;
         } else {
-            statusEl.textContent = success({text: 'Правильно', delay: 250});
+            success({text: 'Правильно', delay: 250})
+            statusEl.textContent = 'Правильно';
         }
         setCurrentKey();
     } else {
-        statusEl.textContent = alert({text: 'Неправильна клавіша', delay: 250});
+        alert({text: 'Неправильна клавіша', delay: 250})
+        statusEl.textContent = 'Неправильна клавіша';
     }
 });
 
 document.addEventListener('keypress', function(event) {
-    event.preventDefault();
+    if (keys.includes(event.key.toLowerCase)) {
+        event.preventDefault();
+    }
 });
 
 btnEl.addEventListener('click', function() {
     currentKeyIndex = 0;
     setCurrentKey();
-    statusEl.textContent = notice({text: 'Нова гра почалась', delay: 1000});
+    notice({text: 'Нова гра почалась', delay: 1000})
+    statusEl.textContent = 'Нова гра почалась';
 });
 setCurrentKey();
 

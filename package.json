@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx parcel src/index.html",
-    "build": "parcel build src/index.html --public-url /hw-js-frontend4-6/",
+    "build": "parcel build src/index.html --public-url /hw-js-frontend4-5/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/OleksaDudko/hw-js-frontend4-5/issues"
   },
-  "homepage": "https://github.com/OleksaDudko/hw-js-frontend4-5#readme",
+  "homepage": "https://OleksaDudko.github.io/hw-js-frontend4-5/",
   "devDependencies": {
     "parcel": "^2.16.4"
   },

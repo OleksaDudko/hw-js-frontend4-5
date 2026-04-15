@@ -748,31 +748,39 @@ document.addEventListener('keydown', function(event) {
     if (pressedKey === correctKey) {
         currentKeyIndex++;
         if (currentKeyIndex >= keys.length) {
-            statusEl.textContent = (0, _pnotifyJs.success)({
+            (0, _pnotifyJs.success)({
                 text: "\u0412\u0438 \u043F\u0435\u0440\u0435\u043C\u043E\u0433\u043B\u0438",
                 delay: 1000
             });
+            statusEl.textContent = "\u0412\u0438 \u043F\u0435\u0440\u0435\u043C\u043E\u0433\u043B\u0438";
             currentKeyIndex = 0;
-        } else statusEl.textContent = (0, _pnotifyJs.success)({
-            text: "\u041F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E",
+        } else {
+            (0, _pnotifyJs.success)({
+                text: "\u041F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E",
+                delay: 250
+            });
+            statusEl.textContent = "\u041F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E";
+        }
+        setCurrentKey();
+    } else {
+        (0, _pnotifyJs.alert)({
+            text: "\u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430 \u043A\u043B\u0430\u0432\u0456\u0448\u0430",
             delay: 250
         });
-        setCurrentKey();
-    } else statusEl.textContent = (0, _pnotifyJs.alert)({
-        text: "\u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430 \u043A\u043B\u0430\u0432\u0456\u0448\u0430",
-        delay: 250
-    });
+        statusEl.textContent = "\u041D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430 \u043A\u043B\u0430\u0432\u0456\u0448\u0430";
+    }
 });
 document.addEventListener('keypress', function(event) {
-    event.preventDefault();
+    if (keys.includes(event.key.toLowerCase)) event.preventDefault();
 });
 btnEl.addEventListener('click', function() {
     currentKeyIndex = 0;
     setCurrentKey();
-    statusEl.textContent = (0, _pnotifyJs.notice)({
+    (0, _pnotifyJs.notice)({
         text: "\u041D\u043E\u0432\u0430 \u0433\u0440\u0430 \u043F\u043E\u0447\u0430\u043B\u0430\u0441\u044C",
         delay: 1000
     });
+    statusEl.textContent = "\u041D\u043E\u0432\u0430 \u0433\u0440\u0430 \u043F\u043E\u0447\u0430\u043B\u0430\u0441\u044C";
 });
 setCurrentKey();
 const ctx = document.getElementById('sales-chart');
